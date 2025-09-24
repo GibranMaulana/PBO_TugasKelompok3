@@ -63,7 +63,19 @@ public class Bank {
 
     void clearAllAccounts() {
         accountList.clear();
+        System.out.println("   All accounts have been cleared (default access method)");
     }
 
+    // Additional methods to demonstrate access modifiers
+    protected void displayBankInfo() {
+        System.out.println("   === BANK INFORMATION (Protected Method) ===");
+        System.out.println("   Total registered accounts: " + getTotalAccount());
+        System.out.println("   Bank system is operational");
+    }
+    
+    void resetBank() {
+        clearAllAccounts();
+        System.out.println("   Bank has been reset (package-private method)");
+    }
     
 }
