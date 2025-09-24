@@ -1,60 +1,46 @@
 package entity;
 
 public class User {
-    private String bankId;
     private String name;
-    private String noRek;
-    private double balance;
-    // private 
+    private int idUser;
+    private Account account;
 
-    public User(String bankId, String name, String noRek, double balance) {
-        this.bankId = bankId;
+    public User(String name, int idUser, Account account) {
         this.name = name;
-        this.noRek = noRek;
-        this.balance = balance;
+        this.idUser = idUser;
+        this.account = account;
     }
-
-    protected String getBankId() {
-        return bankId;
-    }
-
+    
     public String getName() {
         return name;
     }
-    public String getNoRek() {
-        return noRek;
-    }
-    public double getBalance() {
-        return balance;
+
+    public int getIdUser() {
+        return idUser;
     }
 
-    protected void setBalance(double balance) {
-        if (balance < 0) {
-            balance = 0;
-            System.out.println("Balance cannot be negative. Setting balance to 0.");
-        }
-        else {
-            this.balance = balance;
-        }
+    protected void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
-    protected void setBankId(String bankId) {
-        this.bankId = bankId;
+    public String getAccountUsername() {
+        return account.getUsername();
+    }
+
+    protected String setAccount(Account account) {
+        this.account = account;
+        return account.getUsername();
     }
 
     protected void setName(String name) {
         this.name = name;
     }
 
-    protected void setNoRek(String noRek) {
-        this.noRek = noRek;
-    }
-
     public void displayInfo() {
         // System.out.println("Bank ID: " + bankId);
-        System.out.println("Rekening\t: " + getNoRek());
         System.out.println("Name\t\t: " + getName());
-        System.out.println("Balance\t\t: " + getBalance());
+        System.out.println("Account\t\t: " + getAccountUsername());
+
     }  
 
 }
