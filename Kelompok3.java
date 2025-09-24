@@ -38,7 +38,7 @@ public class Kelompok3 {
         System.out.println("   - Creating BankDemo instance from entity package to demonstrate\n");
         
         // Create a demonstration class from the same package
-        BankDemo demo = new BankDemo();
+        DemonstrasiDiFolder demo = new DemonstrasiDiFolder();
         demo.demonstrateProtectedAccess(bank, account1);
         
         System.out.println();
@@ -71,13 +71,15 @@ public class Kelompok3 {
         // ======================
         System.out.println("4. USER CLASS ACCESS MODIFIER DEMONSTRATION:\n");
         
-        User user1 = new User("BANK001", "Alice Johnson", "11111", 1000.0);
+        // Create an account for the user
+        Account userAccount = new Account(55555, 5555, "Alice Johnson", "alicepass", "alice@email.com");
+        User user1 = new User("Alice Johnson", 1001, userAccount);
         
         // Public access
         System.out.println("   === PUBLIC ACCESS ===");
         System.out.println("   User Name (public): " + user1.getName());
-        System.out.println("   User NoRek (public): " + user1.getNoRek());
-        System.out.println("   User Balance (public): " + user1.getBalance());
+        System.out.println("   User ID (public): " + user1.getIdUser());
+        System.out.println("   Account Username (public): " + user1.getAccountUsername());
         
         // Public method
         System.out.println("   User Info (public method):");
@@ -86,6 +88,14 @@ public class Kelompok3 {
         System.out.println();
         // Protected methods demonstration
         demo.demonstrateUserProtectedAccess(user1);
+        
+        // Show limitations from outside package
+        System.out.println("\n   === ACCESS LIMITATIONS FROM OUTSIDE PACKAGE ===");
+        System.out.println("   From Kelompok3 class (different package), we CANNOT access:");
+        System.out.println("   - user1.setIdUser(123) [PROTECTED] - COMPILATION ERROR");
+        System.out.println("   - user1.setName('test') [PROTECTED] - COMPILATION ERROR");
+        System.out.println("   - user1.setAccount(account) [PROTECTED] - COMPILATION ERROR");
+        System.out.println("   We can only access PUBLIC methods like getName(), getIdUser(), etc.");
         
         System.out.println("\n======================");
         

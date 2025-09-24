@@ -58,9 +58,9 @@ This project demonstrates the four access modifiers in Java through a simple ban
 - **Private fields**: `noRek`, `pin`, `username`, `password`, `email`, `balance`
 
 ### User Class (`entity/User.java`)
-- **Public methods**: `getName()`, `getNoRek()`, `getBalance()`, `displayInfo()`
-- **Protected methods**: `getBankId()`, `setBalance()`, `setBankId()`, `setName()`, `setNoRek()`
-- **Private fields**: `bankId`, `name`, `noRek`, `balance`
+- **Public methods**: `getName()`, `getIdUser()`, `getAccountUsername()`, `displayInfo()`
+- **Protected methods**: `setIdUser()`, `setAccount()`, `setName()`
+- **Private fields**: `name`, `idUser`, `account`
 
 ### BankDemo Class (`entity/BankDemo.java`)
 - **Public methods**: All demonstration methods

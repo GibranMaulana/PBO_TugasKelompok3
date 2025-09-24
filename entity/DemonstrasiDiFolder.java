@@ -34,26 +34,48 @@ public class DemonstrasiDiFolder {
     
     public void demonstrateUserProtectedAccess(User user) {
         System.out.println("   === USER PROTECTED ACCESS METHODS ===");
-        System.out.println("   Bank ID (protected): " + user.getBankId());
+        System.out.println("   Current User ID (accessed via public getter): " + user.getIdUser());
         
-        // Using protected setters
-        System.out.println("   Updating user data using protected setters...");
-        user.setBalance(1500.0);
-        user.setBankId("BANK002");
+        // Using protected setters - these can only be accessed from same package
+        System.out.println("   Updating user data using PROTECTED setters...");
+        System.out.println("   - setIdUser(9999) [PROTECTED METHOD]");
+        user.setIdUser(9999);
+        System.out.println("   - setName('Alice Updated') [PROTECTED METHOD]");
         user.setName("Alice Updated");
         
-        System.out.println("   Updated user info:");
+        // Creating a new account to demonstrate setAccount
+        Account newAccount = new Account(99999, 1111, "NewAccount", "newpass", "new@email.com");
+        System.out.println("   - setAccount(newAccount) [PROTECTED METHOD]");
+        String accountUsername = user.setAccount(newAccount);
+        System.out.println("   Protected setAccount method returned username: " + accountUsername);
+        
+        System.out.println("   Updated user info (via public displayInfo method):");
         user.displayInfo();
+        
+        System.out.println("   Note: These protected methods (setIdUser, setName, setAccount)");
+        System.out.println("         can only be accessed from classes in the same package!");
     }
     
     public void demonstratePrivateAccessLimitations() {
         System.out.println("   === PRIVATE ACCESS LIMITATIONS ===");
         System.out.println("   Private fields and methods CANNOT be accessed directly:");
+        System.out.println("   FROM ACCOUNT CLASS:");
         System.out.println("   - account.noRek (private field) - COMPILATION ERROR");
         System.out.println("   - account.pin (private field) - COMPILATION ERROR");
         System.out.println("   - account.password (private field) - COMPILATION ERROR");
+        System.out.println("   - account.balance (private field) - COMPILATION ERROR");
+        System.out.println("");
+        System.out.println("   FROM BANK CLASS:");
+        System.out.println("   - bank.accountList (private field) - COMPILATION ERROR");
         System.out.println("   - bank.generateUUID() (private method) - COMPILATION ERROR");
         System.out.println("   - bank.uuidExist() (private method) - COMPILATION ERROR");
-        System.out.println("   We can only access private data through public/protected getters!");
+        System.out.println("   - bank.getAccountList() (private method) - COMPILATION ERROR");
+        System.out.println("");
+        System.out.println("   FROM USER CLASS:");
+        System.out.println("   - user.name (private field) - COMPILATION ERROR");
+        System.out.println("   - user.idUser (private field) - COMPILATION ERROR");
+        System.out.println("   - user.account (private field) - COMPILATION ERROR");
+        System.out.println("");
+        System.out.println("   ✓ We can only access private data through public/protected getters!");
     }
 }
