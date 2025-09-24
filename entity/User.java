@@ -1,28 +1,18 @@
 package entity;
 
 public class User {
-    private String bankId;
     private String name;
-    private String noRek;
     private double balance;
-    // private 
+    private Account account;
 
-    public User(String bankId, String name, String noRek, double balance) {
-        this.bankId = bankId;
+    public User(String name, double balance) {
         this.name = name;
-        this.noRek = noRek;
         this.balance = balance;
     }
 
-    protected String getBankId() {
-        return bankId;
-    }
 
     public String getName() {
         return name;
-    }
-    public String getNoRek() {
-        return noRek;
     }
     public double getBalance() {
         return balance;
@@ -37,22 +27,11 @@ public class User {
             this.balance = balance;
         }
     }
-
-    protected void setBankId(String bankId) {
-        this.bankId = bankId;
-    }
-
     protected void setName(String name) {
         this.name = name;
     }
-
-    protected void setNoRek(String noRek) {
-        this.noRek = noRek;
-    }
-
     public void displayInfo() {
         // System.out.println("Bank ID: " + bankId);
-        System.out.println("Rekening\t: " + getNoRek());
         System.out.println("Name\t\t: " + getName());
         System.out.println("Balance\t\t: " + getBalance());
     }  
